@@ -67,16 +67,16 @@
     <script>
         function Navigate(moduleName) {
             console.log('Navigate Called');
-            if (Navigate === 'home') {
+            if (moduleName === 'home') {
                 GAWrapper('Starbucks', 'Home Clicked', 'home');
             }
-            else if (Navigate === 'menu') {
+            else if (moduleName === 'menu') {
                 GAWrapper('Starbucks', 'Menu Clicked', 'menu');
             }
-            else if (Navigate === 'new') {
+            else if (moduleName === 'new') {
                 GAWrapper('Starbucks', 'Whats New Clicked', 'new');
             }
-            else if (Navigate === 'contact') {
+            else if (moduleName === 'contact') {
                 GAWrapper('Starbucks', 'Contact Clicked', 'contact');
             }
         }
