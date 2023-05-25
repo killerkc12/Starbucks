@@ -27,10 +27,10 @@
                 <img class="logo" src="./images/logo.png" alt="logo">
             </a>
             <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Menu</a></li>
-                <li><a href="#">What's New</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="#" onclick="Navigate('home')">Home</a></li>
+                <li><a href="#" onclick="Navigate('menu')">Menu</a></li>
+                <li><a href="#" onclick="Navigate('new')">What's New</a></li>
+                <li><a href="#" onclick="Navigate('contact')">Contact</a></li>
             </ul>
         </header>
         <div class="content">
@@ -65,17 +65,35 @@
     </section>
 
     <script>
-        function imgSlider(anything) {
-            document.querySelector('.starbucks').src = anything;
-            console.log('Coffee Changed');
+        function Navigate(moduleName) {
+            if (Navigate === 'home') {
+                GAWrapper('Starbucks', 'Home Clicked');
+            }
+            else if (Navigate === 'menu') {
+                GAWrapper('Starbucks', 'Menu Clicked');
+            }
+            else if (Navigate === 'new') {
+                GAWrapper('Starbucks', 'Whats New Clicked');
+            }
+            else if (Navigate === 'contact') {
+                GAWrapper('Starbucks', 'Contact Clicked');
+            }
+        }
+
+        function GAWrapper(eventCategory, eventLabel, value) {
             window.gtag('event', 'action', {
-                event_category: 'GA4 Testing - Starbucks',
-                event_label: 'GA4 Testing - Coffee Changed'
+                event_category: eventCategory,
+                event_label: eventLabel,
+                value: value
             });
         }
 
+        function imgSlider(anything) {
+            document.querySelector('.starbucks').src = anything;
+            GAWrapper('Starbucks', 'Coffee Clicked');
+        }
+
         function changeCircleColor(color) {
-            console.log('circle changed');
             const circle = document.querySelector('.circle');
             circle.style.backgroundColor = color;
         }
