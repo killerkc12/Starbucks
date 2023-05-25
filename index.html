@@ -65,6 +65,10 @@
     </section>
 
     <script>
+        gtag('event', 'screen_view', {
+            'app_name': 'myAppName',
+            'screen_name': 'Home'
+        });
         function imgSlider(anything) {
             document.querySelector('.starbucks').src = anything;
             console.log('Coffee Changed');
