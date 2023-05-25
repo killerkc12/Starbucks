@@ -7,6 +7,15 @@
     <link rel = "icon" href = "./images/logo.png" type = "image/x-icon">
     <link rel="stylesheet" href="style.css">
     <title>Starbucks</title>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HWJZTHG8V3"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-HWJZTHG8V3');
+    </script>
 </head>
 <body>
     <section>
@@ -58,9 +67,15 @@
     <script>
         function imgSlider(anything) {
             document.querySelector('.starbucks').src = anything;
+            console.log('Coffee Changed');
+            window.gtag('event', 'action', {
+                event_category: 'GA4 Testing - Starbucks',
+                event_label: 'GA4 Testing - Coffee Changed'
+            });
         }
 
         function changeCircleColor(color) {
+            console.log('circle changed');
             const circle = document.querySelector('.circle');
             circle.style.backgroundColor = color;
         }
