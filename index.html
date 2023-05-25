@@ -65,6 +65,7 @@
     </section>
 
     <script>
+        console.log('script called')
         gtag('event', 'screen_view', {
             'app_name': 'myAppName',
             'screen_name': 'Home'
@@ -72,6 +73,10 @@
         function imgSlider(anything) {
             document.querySelector('.starbucks').src = anything;
             console.log('Coffee Changed');
+            gtag('event', 'screen_view', {
+                'app_name': 'myAppName',
+                'screen_name': 'Home'
+            });
             window.gtag('event', 'action', {
                 event_category: 'GA4 Testing - Starbucks',
                 event_label: 'GA4 Testing - Coffee Changed'
