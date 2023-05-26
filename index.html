@@ -8,14 +8,14 @@
     <link rel="stylesheet" href="style.css">
     <title>Starbucks</title>
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HWJZTHG8V3"></script>
+    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-HWJZTHG8V3"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
 
         gtag('config', 'G-HWJZTHG8V3');
-    </script>
+    </script> -->
 </head>
 <body>
     <section>
@@ -66,6 +66,7 @@
 
     <script>
         // InitGA4('G-HWJZTHG8V3');
+        GA4(window, document, 'script', 'dataLayer', 'G-HWJZTHG8V3');
         
         function Navigate(moduleName) {
             console.log('Navigate Called');
@@ -90,6 +91,20 @@
                 value: value
             });
         }
+        function GA4(w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js',
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src =
+                'https://www.googletagmanager.com/gtag/js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+    }
 
         function InitGA4(measurementID) {
             console.log('InitGA4 called');
