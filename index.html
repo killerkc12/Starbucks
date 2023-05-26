@@ -65,8 +65,8 @@
     </section>
 
     <script>
-        InitGA4('G-HWJZTHG8V3');
-        // GA4(window, document, 'script', 'dataLayer', 'G-HWJZTHG8V3');
+        // InitGA4('G-HWJZTHG8V3');
+        GA4('G-HWJZTHG8V3');
         
         function Navigate(moduleName) {
             console.log('Navigate Called');
@@ -91,19 +91,14 @@
                 value: value
             });
         }
-        function GA4(w, d, s, l, i) {
-            w[l] = w[l] || [];
-            w[l].push({
-                'gtm.start': new Date().getTime(),
-                event: 'gtm.js',
-            });
-            var f = d.getElementsByTagName(s)[0],
-                j = d.createElement(s),
-                dl = l != 'dataLayer' ? '&l=' + l : '';
-            j.async = true;
-            j.src =
-                'https://www.googletagmanager.com/gtag/js?id=' + i + dl;
-            f.parentNode.insertBefore(j, f);
+        function GA4(measurementID) {
+           // Create the script element
+            var scriptElement = document.createElement('script');
+            scriptElement.async = true;
+            scriptElement.src = 'https://www.googletagmanager.com/gtag/js?id=' + measurementID;
+
+            // Append the script element to the document
+            document.head.appendChild(scriptElement);
     }
 
         function InitGA4(measurementID) {
