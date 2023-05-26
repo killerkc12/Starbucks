@@ -96,17 +96,17 @@
             const script = 'script';
             const l = 'dataLayer';
             // eslint-disable-next-line no-param-reassign
-            window[l] = window[l] || [];
-            window[l].push({
-                'gtm.start': new Date().getTime(),
-                event: 'gtm.js',
-            });
+            // window[l] = window[l] || [];
+            // window[l].push({
+            //     'gtm.start': new Date().getTime(),
+            //     event: 'gtm.js',
+            // });
             const f = document.getElementsByTagName(script)[0];
             const j = document.createElement(script);
-            const dl = l !== 'dataLayer' ? `&l=${l}` : '';
+            // const dl = l !== 'dataLayer' ? `&l=${l}` : '';
             j.async = true;
-            // j.src = `https://www.googletagmanager.com/gtag/js?id=${measurementID}`;
-            j.src = `https://www.googletagmanager.com/gtag/js?id=${measurementID}${dl}`;
+            j.src = `https://www.googletagmanager.com/gtag/js?id=${measurementID}`;
+            // j.src = `https://www.googletagmanager.com/gtag/js?id=${measurementID}${dl}`;
             f.parentNode.insertBefore(j, f);
 
 
