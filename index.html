@@ -8,14 +8,14 @@
     <link rel="stylesheet" href="style.css">
     <title>Starbucks</title>
     <!-- Google tag (gtag.js) -->
-    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-HWJZTHG8V3"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HWJZTHG8V3"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
 
         gtag('config', 'G-HWJZTHG8V3');
-    </script> -->
+    </script>
 </head>
 <body>
     <section>
@@ -65,7 +65,7 @@
     </section>
 
     <script>
-        InitGA4('G-HWJZTHG8V3');
+        // InitGA4('G-HWJZTHG8V3');
         
         function Navigate(moduleName) {
             console.log('Navigate Called');
@@ -83,8 +83,8 @@
             }
         }
 
-        function GAWrapper(eventCategory, eventLabel, value) {
-            window.gtag('event', 'action', {
+        function GAWrapper(eventCategory, eventAction, eventLabel, value) {
+            window.gtag('event', eventAction, {
                 event_category: eventCategory,
                 event_label: eventLabel,
                 value: value
