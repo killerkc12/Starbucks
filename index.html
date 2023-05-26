@@ -65,8 +65,8 @@
     </section>
 
     <script>
-        // InitGA4('G-HWJZTHG8V3');
-        GA4(window, document, 'script', 'dataLayer', 'G-HWJZTHG8V3');
+        InitGA4('G-HWJZTHG8V3');
+        // GA4(window, document, 'script', 'dataLayer', 'G-HWJZTHG8V3');
         
         function Navigate(moduleName) {
             console.log('Navigate Called');
@@ -109,23 +109,31 @@
         function InitGA4(measurementID) {
             console.log('InitGA4 called');
             
-            // Create the script element
-            var scriptElement = document.createElement('script');
-            scriptElement.async = true;
-            scriptElement.src = `https://www.googletagmanager.com/gtag/js?id=${measurementID}`;
+            const script = 'script';
+            const dataLayer = 'dataLayer';
+            // eslint-disable-next-line no-param-reassign
+            window[dataLayer] = window[dataLayer] || [];
+            window[dataLayer].push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js',
+            });
+            const f = document.getElementsByTagName(script)[0];
+            const j = document.createElement(script);
+            const dl = dataLayer !== 'dataLayer' ? `&l=${dataLayer}` : '';
+            j.async = true;
+            // j.src = `https://www.googletagmanager.com/gtag/js?id=${measurementID}`;
+            j.src = `https://www.googletagmanager.com/gtag/js?id=${measurementID}${dl}`;
+            f.parentNode.insertBefore(j, f);
 
-            // Create the inline script element
-            var inlineScript = document.createElement('script');
-            inlineScript.textContent = `
+
+            // Configure GA4 tracking with Measurement ID
             window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', ${new Date()});
-            gtag('config', ${measurementID});
-            `;
-
-            // Append the script elements to the document
-            document.head.appendChild(scriptElement);
-            document.head.appendChild(inlineScript);
+            function gtag() {
+                // eslint-disable-next-line no-undef, prefer-rest-params
+                dataLayer.push(arguments);
+            }
+            gtag('js', new Date());
+            gtag('config', measurementID);
         }
 
         function imgSlider(anything) {
