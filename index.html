@@ -110,16 +110,16 @@
             console.log('InitGA4 called');
             
             const script = 'script';
-            const dataLayer = 'dataLayer';
+            const l = 'dataLayer';
             // eslint-disable-next-line no-param-reassign
-            window[dataLayer] = window[dataLayer] || [];
-            window[dataLayer].push({
+            window[l] = window[l] || [];
+            window[l].push({
                 'gtm.start': new Date().getTime(),
                 event: 'gtm.js',
             });
             const f = document.getElementsByTagName(script)[0];
             const j = document.createElement(script);
-            const dl = dataLayer !== 'dataLayer' ? `&l=${dataLayer}` : '';
+            const dl = l !== 'dataLayer' ? `&l=${l}` : '';
             j.async = true;
             // j.src = `https://www.googletagmanager.com/gtag/js?id=${measurementID}`;
             j.src = `https://www.googletagmanager.com/gtag/js?id=${measurementID}${dl}`;
