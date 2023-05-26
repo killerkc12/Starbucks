@@ -122,13 +122,13 @@
 
 
             // Configure GA4 tracking with Measurement ID
-            // window.dataLayer = window.dataLayer || [];
-            // function gtag() {
-            //     // eslint-disable-next-line no-undef, prefer-rest-params
-            //     window.dataLayer.push(arguments);
-            // }
-            // gtag('js', new Date());
-            // gtag('config', measurementID);
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                // eslint-disable-next-line no-undef, prefer-rest-params
+                window.dataLayer.push(arguments);
+            }
+            gtag('js', new Date());
+            gtag('config', measurementID);
         }
 
         function imgSlider(anything) {
