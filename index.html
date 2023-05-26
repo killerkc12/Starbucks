@@ -8,14 +8,14 @@
     <link rel="stylesheet" href="style.css">
     <title>Starbucks</title>
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HWJZTHG8V3"></script>
+    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-HWJZTHG8V3"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
 
         gtag('config', 'G-HWJZTHG8V3');
-    </script>
+    </script> -->
 </head>
 <body>
     <section>
@@ -65,6 +65,8 @@
     </section>
 
     <script>
+        InitGA4('G-HWJZTHG8V3');
+        
         function Navigate(moduleName) {
             console.log('Navigate Called');
             if (moduleName === 'home') {
@@ -87,6 +89,34 @@
                 event_label: eventLabel,
                 value: value
             });
+        }
+
+        InitGA4(measurementID) {
+            const script = 'script';
+            const dataLayer = 'dataLayer';
+            // eslint-disable-next-line no-param-reassign
+            window[dataLayer] = window[dataLayer] || [];
+            window[dataLayer].push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js',
+            });
+            const f = document.getElementsByTagName(script)[0];
+            const j = document.createElement(script);
+            // const dl = dataLayer !== 'dataLayer' ? `&l=${dataLayer}` : '';
+            j.async = true;
+            j.src = `https://www.googletagmanager.com/gtag/js?id=${measurementID}`;
+            // j.src = `https://www.googletagmanager.com/gtag/js?id=${measurementID}${dl}`;
+            f.parentNode.insertBefore(j, f);
+
+
+            // Configure GA4 tracking with Measurement ID
+            // window.dataLayer = window.dataLayer || [];
+            // function gtag() {
+            //     // eslint-disable-next-line no-undef, prefer-rest-params
+            //     dataLayer.push(arguments);
+            // }
+            // gtag('js', new Date());
+            // gtag('config', measurementID);
         }
 
         function imgSlider(anything) {
