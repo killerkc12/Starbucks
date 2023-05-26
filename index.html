@@ -103,10 +103,10 @@
             });
             const f = document.getElementsByTagName(script)[0];
             const j = document.createElement(script);
-            // const dl = dataLayer !== 'dataLayer' ? `&l=${dataLayer}` : '';
+            const dl = dataLayer !== 'dataLayer' ? `&l=${dataLayer}` : '';
             j.async = true;
-            j.src = `https://www.googletagmanager.com/gtag/js?id=${measurementID}`;
-            // j.src = `https://www.googletagmanager.com/gtag/js?id=${measurementID}${dl}`;
+            // j.src = `https://www.googletagmanager.com/gtag/js?id=${measurementID}`;
+            j.src = `https://www.googletagmanager.com/gtag/js?id=${measurementID}${dl}`;
             f.parentNode.insertBefore(j, f);
 
 
